@@ -48,7 +48,7 @@ class Sounds {
   static void playBackgroundSound() async {
     if (kIsWeb) return;
     await FlameAudio.bgm.stop();
-    FlameAudio.bgm.play('sound_bg.mp3');
+    FlameAudio.bgm.play('yinoch_bg.mp3');
   }
 
   static void playBackgroundBoosSound() {
