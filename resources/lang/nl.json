@@ -1,0 +1,47 @@
+{
+  "play_cap": "PLAY",
+  "credits_cap": "CREDITS",
+  "powered_by": "Powered by ",
+  "built_with": "Built with ",
+  "talk_wizard_1": "village van current protagonist wordt geplunderd door mysterieuze groep",
+  "talk_player_1": "wilt wraak nemen weet niet hoe\n",
+  "talk_wizard_2": "ontmoet mentor neemt test",
+  "talk_player_2": "Don't worry my old man. Knight like me never existed!\nI will exterminate every creature in this place and rescue the child!",
+  "talk_wizard_3": "doet side missions en vind branch hideout\n",
+  "talk_kid_1": "Heeeelp! Heeeelp!",
+  "talk_boss_1": "Shut up, you appetizing little creature!\nThe time has come to taste your soft skin! ha ha ha ha",
+  "talk_player_3": "It won't be your disgusting creature this time!\nYour monstrous days are over!",
+  "talk_boss_2": "Look that! Another knight with an inflated ego thinking he can stop me! ha ha ha ha \nCome here!",
+  "talk_kid_2": "Thank the gods !!! \nYou managed to defeat this horrible creature! Thank you very much! \nI don't even know how to thank you!",
+  "talk_player_4": "It was an honor to be able to help you! And don't worry about rewarding me, your father promised me a fortune to rescue you! :-)",
+  "play_again_cap": "PLAY AGAIN",
+  "congratulations": "CONGRATULATIONS!",
+  "thanks": "Thanks for testing the game and feeling the power of Flame and Bonfire in building 2D games.\nMaybe we can have a continuation of the game!\nI hope that you enjoyed!",
+  "door_without_key": "I think I need a key to get through here!"
+}
+//1 village van current protagonist wordt geplunderd door mysterieuze groep
+//2 wilt wraak nemen weet niet hoe
+//3 ontmoet mentor neemt test
+//4 leeft samen met mentor in zwakke village
+//5 doet side missions en vind branch hideout
+//6 verslaat hideout en vind plan
+//7 gaat terug naar mentor huis
+//8 mentor en zijn village zijn geplunderd
+//9 gaat op een quest om de mysterieuze team te verslaan
+//10 vind branch hideout en vind daar in kleine details van hun plan
+//11 ontmoet vriend 1 als slaaf van een branch hideout
+//12 ontmoet de baas van de mysterieuze  groep
+//13 gaat samen naar de dorp van vriend 1 maar ziet dat de dorp van vriend 1 geplunderd is
+//14 help vriend 1 uit depressie
+//15 vriend 1 zweert om wraak te nemen op de mysterieuze  groep
+//16 vriend 1 joint je party
+//17 vind een legende van een wapen dat van elementen kan veranderen in de witte village
+//17.5 ontmoet rivaal
+//18 doet trial
+//19 wordt gesaboteerd door rivaal
+//20 krijgt zwaard
+//21 gaat terug en rivaal joint om sterker te worden
+//22 gaat terug naar licht village
+//23 verdedigt de licht village van de  mysterieuze team verslaat de sub boss
+//24 ontdekt de boss en hideout locatie
+//25 gaat naar de hideout

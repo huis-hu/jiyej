@@ -3,10 +3,15 @@ import 'dart:async' as async;
 import 'package:bonfire/bonfire.dart';
 import 'package:darkness_dungeon/game.dart';
 import 'package:darkness_dungeon/util/custom_sprite_animation_widget.dart';
+import 'package:darkness_dungeon/util/eden_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/enemy_sprite_sheet.dart';
+import 'package:darkness_dungeon/util/iszu_sprite_sheet.dart';
+import 'package:darkness_dungeon/util/jin_sprite_sheet.dart';
+import 'package:darkness_dungeon/util/jolee_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/localization/strings_location.dart';
 import 'package:darkness_dungeon/util/player_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
+import 'package:darkness_dungeon/util/yinoch_sprite_sheet.dart';
 import 'package:flame_splash_screen/flame_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,7 +23,7 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
   bool showSplash = true;
-  int currentPosition = 0;
+  int currentPosition = 3;
   async.Timer _timer;
   List<Future<SpriteAnimation>> sprites = [
     PlayerSpriteSheet.idleRight(),
@@ -26,6 +31,12 @@ class _MenuState extends State<Menu> {
     EnemySpriteSheet.impIdleRight(),
     EnemySpriteSheet.miniBossIdleRight(),
     EnemySpriteSheet.bossIdleRight(),
+
+    // IszuSpriteSheet.idleRight(),
+    // EdenSpriteSheet.idleRight(),
+    // YinochSpriteSheet.idleRight(),
+    // JinSpriteSheet.idleRight(),
+    // JoleeSpriteSheet.idleRight(),
   ];
 
   @override
@@ -51,21 +62,52 @@ class _MenuState extends State<Menu> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              "Darkness Dungeon",
+              "J.I.Y.E.J",
               style: TextStyle(
                   color: Colors.white, fontFamily: 'Normal', fontSize: 30.0),
             ),
             SizedBox(
               height: 20.0,
             ),
-            if (sprites.isNotEmpty)
-              SizedBox(
-                height: 100,
-                width: 100,
-                child: CustomSpriteAnimationWidget(
-                  animation: sprites[currentPosition],
-                ),
-              ),
+            Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {
+                      currentPosition--;
+                      if (currentPosition < 0) {
+                        currentPosition = sprites.length - 1;
+                      }
+                    },
+                    child: Text('<-'),
+                  ),
+                if (sprites.isNotEmpty)
+                  SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: CustomSpriteAnimationWidget(
+                      animation: sprites[currentPosition],
+                    ),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {
+                      currentPosition++;
+                      if (currentPosition > sprites.length - 1) {
+                        currentPosition = 0;
+                      }
+                      print(currentPosition);
+                    },
+                    child: Text('->'),
+                  ),
+                ]
+            ),
+
             SizedBox(
               height: 30.0,
             ),
@@ -115,7 +157,7 @@ class _MenuState extends State<Menu> {
                     ),
                     InkWell(
                       onTap: () {
-                        _launchURL('https://github.com/RafaelBarbosatec');
+                        _launchURL('https://github.com/huis-hu');
                       },
                       child: Text(
                         'rafaelbarbosatec',
@@ -145,7 +187,7 @@ class _MenuState extends State<Menu> {
                     InkWell(
                       onTap: () {
                         _launchURL(
-                            'https://github.com/RafaelBarbosatec/bonfire');
+                            'https://github.com/huis-hu/jiyej');
                       },
                       child: Text(
                         'Bonfire',
@@ -174,7 +216,7 @@ class _MenuState extends State<Menu> {
         setState(() {
           showSplash = false;
         });
-        startTimer();
+        // startTimer();
       },
     );
   }
@@ -182,10 +224,10 @@ class _MenuState extends State<Menu> {
   void startTimer() {
     _timer = async.Timer.periodic(Duration(seconds: 2), (timer) {
       setState(() {
-        currentPosition++;
-        if (currentPosition > sprites.length - 1) {
-          currentPosition = 0;
-        }
+        // currentPosition++;
+        // if (currentPosition > sprites.length - 1) {
+        //   currentPosition = 0;
+        // }
       });
       print(currentPosition);
     });

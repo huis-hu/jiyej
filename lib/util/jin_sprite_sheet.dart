@@ -1,6 +1,6 @@
 import 'package:bonfire/bonfire.dart';
 
-class IszuSpriteSheet {
+class JinSpriteSheet {
   static Future<SpriteAnimation> idleRight() => SpriteAnimation.load(
         'player/iszu_idle.png',
         SpriteAnimationData.sequenced(
