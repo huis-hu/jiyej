@@ -15,8 +15,8 @@ class WizardNPC extends GameDecoration {
   ) : super.withAnimation(
           NpcSpriteSheet.wizardIdleLeft(),
           position: position,
-          width: tileSize * 0.8,
-          height: tileSize,
+          width: tileSize ,
+          height: tileSize * 2,
         );
 
   @override

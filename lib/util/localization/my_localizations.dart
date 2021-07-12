@@ -20,7 +20,7 @@ class MyLocalizations {
 
   Future<bool> load() async {
     String data = await rootBundle
-        .loadString('resources/lang/${this.locale.languageCode}.json');
+        .loadString('resources/lang/nl.json');
     Map<String, dynamic> _result = json.decode(data);
 
     this._sentences = new Map();

@@ -12,9 +12,15 @@ import 'package:darkness_dungeon/util/localization/strings_location.dart';
 import 'package:darkness_dungeon/util/player_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
 import 'package:darkness_dungeon/util/yinoch_sprite_sheet.dart';
+import 'package:darkness_dungeon/yinoch_game.dart';
 import 'package:flame_splash_screen/flame_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'eden_game.dart';
+import 'iszu_game.dart';
+import 'jin_game.dart';
+import 'jolee_game.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -22,22 +28,19 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  bool showSplash = true;
+  bool showSplash = false;
   int currentPosition = 3;
   async.Timer _timer;
-  List<Future<SpriteAnimation>> sprites = [
-    PlayerSpriteSheet.idleRight(),
-    EnemySpriteSheet.goblinIdleRight(),
-    EnemySpriteSheet.impIdleRight(),
-    EnemySpriteSheet.miniBossIdleRight(),
-    EnemySpriteSheet.bossIdleRight(),
+  var jin    = JinSpriteSheet.idleRight();
+  var jolee  = JoleeSpriteSheet.idleRight();
+  var yinoch = YinochSpriteSheet.idleRight();
+  var eden   = EdenSpriteSheet.idleRight();
+  var iszu   = IszuSpriteSheet.idleRight();
 
-    // IszuSpriteSheet.idleRight(),
-    // EdenSpriteSheet.idleRight(),
-    // YinochSpriteSheet.idleRight(),
-    // JinSpriteSheet.idleRight(),
-    // JoleeSpriteSheet.idleRight(),
-  ];
+  var titleStyle =  TextStyle(
+      color:        Colors.white,
+      fontFamily:   'Bold',
+      fontSize:     30.0);
 
   @override
   void dispose() {
@@ -53,160 +56,37 @@ class _MenuState extends State<Menu> {
       child: showSplash ? buildSplash() : buildMenu(),
     );
   }
+Column playerColumn(anim, name, game){
+ return Column(
+      children: <Widget>[
+        SizedBox( height: 100,width: 100),
+        SizedBox( height: 200,width: 100, child: CustomSpriteAnimationWidget(animation: anim)),
+        ElevatedButton( child: Text( name, style: titleStyle),
+            onPressed: () { Navigator.push( context,MaterialPageRoute(builder: (context)=>game));})]);
+
+}
 
   Widget buildMenu() {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              "J.I.Y.E.J",
-              style: TextStyle(
-                  color: Colors.white, fontFamily: 'Normal', fontSize: 30.0),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Row(
+      body:
+
+        Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  TextButton(
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
-                    onPressed: () {
-                      currentPosition--;
-                      if (currentPosition < 0) {
-                        currentPosition = sprites.length - 1;
-                      }
-                    },
-                    child: Text('<-'),
-                  ),
-                if (sprites.isNotEmpty)
-                  SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: CustomSpriteAnimationWidget(
-                      animation: sprites[currentPosition],
-                    ),
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
-                    onPressed: () {
-                      currentPosition++;
-                      if (currentPosition > sprites.length - 1) {
-                        currentPosition = 0;
-                      }
-                      print(currentPosition);
-                    },
-                    child: Text('->'),
-                  ),
-                ]
-            ),
+                  SizedBox( height: 100,width: 30, ),
+                  playerColumn(jin, 'Jin', JinGame()),
+                  SizedBox( height: 100,width: 30, ),
+                  playerColumn(iszu, 'Iszu', IszuGame()),
+                  SizedBox( height: 100,width: 30, ),
+                  playerColumn(yinoch, 'Yinoch', YinochGame()),
+                  SizedBox( height: 100,width: 30, ),
+                  playerColumn(eden, 'Eden', EdenGame()),
+                  SizedBox( height: 100,width: 30, ),
+                  playerColumn(jolee, 'Jolee', JoleeGame()),
+    ]
 
-            SizedBox(
-              height: 30.0,
-            ),
-            SizedBox(
-              width: 150,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                color: Color.fromARGB(255, 118, 82, 78),
-                child: Text(
-                  getString('play_cap'),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Normal',
-                    fontSize: 17.0,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Game()),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          height: 20,
-          margin: EdgeInsets.all(20.0),
-          child: Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      getString('powered_by'),
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Normal',
-                          fontSize: 12.0),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        _launchURL('https://github.com/huis-hu');
-                      },
-                      child: Text(
-                        'rafaelbarbosatec',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue,
-                          fontFamily: 'Normal',
-                          fontSize: 12.0,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      getString('built_with'),
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Normal',
-                          fontSize: 12.0),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        _launchURL(
-                            'https://github.com/huis-hu/jiyej');
-                      },
-                      child: Text(
-                        'Bonfire',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue,
-                          fontFamily: 'Normal',
-                          fontSize: 12.0,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    ));
   }
 
   Widget buildSplash() {
@@ -214,9 +94,9 @@ class _MenuState extends State<Menu> {
       theme: FlameSplashTheme.dark,
       onFinish: (BuildContext context) {
         setState(() {
-          showSplash = false;
+          showSplash = true;
         });
-        // startTimer();
+        startTimer();
       },
     );
   }
@@ -224,20 +104,18 @@ class _MenuState extends State<Menu> {
   void startTimer() {
     _timer = async.Timer.periodic(Duration(seconds: 2), (timer) {
       setState(() {
-        // currentPosition++;
-        // if (currentPosition > sprites.length - 1) {
-        //   currentPosition = 0;
-        // }
       });
       print(currentPosition);
     });
   }
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+  Widget startgame(BuildContext context) {
+    switch( currentPosition){
+    case 0: return JinGame();
+    case 1: return JoleeGame();
+    case 2: return YinochGame();
+    case 3: return EdenGame();
+    case 4: return IszuGame();
     }
   }
 }

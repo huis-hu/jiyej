@@ -14,32 +14,27 @@ import 'package:darkness_dungeon/interface/knight_interface.dart';
 import 'package:darkness_dungeon/main.dart';
 import 'package:darkness_dungeon/npc/kid.dart';
 import 'package:darkness_dungeon/npc/wizard_npc.dart';
+import 'package:darkness_dungeon/player/Jin.dart';
 import 'package:darkness_dungeon/player/knight.dart';
 import 'package:darkness_dungeon/util/dialogs.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
 import 'package:flutter/material.dart';
 
-class Game extends StatefulWidget {
-  int currentPosition;
+import 'menu.dart';
 
-  Game(int currentPosition);
-
+class JinGame extends StatefulWidget {
 
 
   @override
-  _GameState createState() => _GameState(currentPosition);
+  _GameState createState() => _GameState();
 }
 
-class _GameState extends State<Game>
+class _GameState extends State<JinGame>
     with WidgetsBindingObserver
     implements GameListener {
   bool showGameOver = false;
 
   GameController _controller;
-
-  int currentPosition;
-
-  _GameState(int currentPosition);
 
   @override
   void initState() {
@@ -76,7 +71,7 @@ class _GameState extends State<Game>
   @override
   Widget build(BuildContext context) {
     Size sizeScreen = MediaQuery.of(context).size;
-    tileSize = max(sizeScreen.height, sizeScreen.width) / 15;
+    tileSize = max(sizeScreen.height, sizeScreen.width) / 25;
 
     return Material(
       color: Colors.transparent,
@@ -106,11 +101,11 @@ class _GameState extends State<Game>
             )
           ],
         ),
-        player: Knight(
+        player: Jin(
           initPosition: Vector2(2 * tileSize, 3 * tileSize),
         ),
         map: TiledWorldMap(
-          'tiled/map.json',
+          'tiled/jin_map.json',
           forceTileSize: Size(tileSize, tileSize),
           objectsBuilder: {
             'door': (p) => Door(p.position, p.size),
@@ -152,7 +147,7 @@ class _GameState extends State<Game>
       context,
       () {
         Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Game(currentPosition)),
+          MaterialPageRoute(builder: (context) => Menu()),
           (Route<dynamic> route) => false,
         );
       },

@@ -6,7 +6,7 @@ class IszuSpriteSheet {
         SpriteAnimationData.sequenced(
           amount: 4,
           stepTime: 0.1,
-          textureSize: Vector2(64, 32),
+          textureSize: Vector2(32, 64),
         ),
       );
 
@@ -15,7 +15,7 @@ class IszuSpriteSheet {
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
-          textureSize: Vector2(64, 32),
+          textureSize: Vector2(32, 64),
         ),
       );
 
@@ -24,7 +24,7 @@ class IszuSpriteSheet {
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
-          textureSize: Vector2(64, 32),
+          textureSize: Vector2(32, 64),
         ),
       );
   static Future<SpriteAnimation> attackEffectRight() => SpriteAnimation.load(
@@ -32,7 +32,7 @@ class IszuSpriteSheet {
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
-          textureSize: Vector2(64, 32),
+          textureSize: Vector2(32, 64),
         ),
       );
   static Future<SpriteAnimation> attackEffectTop() => SpriteAnimation.load(
@@ -40,7 +40,7 @@ class IszuSpriteSheet {
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
-          textureSize: Vector2(64, 32),
+          textureSize: Vector2(32, 64),
         ),
       );
 
@@ -51,7 +51,7 @@ class IszuSpriteSheet {
           SpriteAnimationData.sequenced(
             amount: 6,
             stepTime: 0.1,
-            textureSize: Vector2(64, 32),
+            textureSize: Vector2(32, 64),
           ),
         ),
         idleRight: idleRight(),
@@ -60,7 +60,7 @@ class IszuSpriteSheet {
           SpriteAnimationData.sequenced(
             amount: 6,
             stepTime: 0.1,
-            textureSize: Vector2(64, 32),
+            textureSize: Vector2(32, 64),
           ),
         ),
         runRight: SpriteAnimation.load(
@@ -68,7 +68,7 @@ class IszuSpriteSheet {
           SpriteAnimationData.sequenced(
             amount: 6,
             stepTime: 0.1,
-            textureSize: Vector2(64, 32),
+            textureSize: Vector2(32, 64),
           ),
         ),
       );

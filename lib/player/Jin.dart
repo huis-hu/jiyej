@@ -4,12 +4,11 @@ import 'package:bonfire/bonfire.dart';
 import 'package:darkness_dungeon/main.dart';
 import 'package:darkness_dungeon/util/functions.dart';
 import 'package:darkness_dungeon/util/game_sprite_sheet.dart';
-import 'package:darkness_dungeon/util/iszu_sprite_sheet.dart';
-import 'package:darkness_dungeon/util/player_sprite_sheet.dart';
+import 'package:darkness_dungeon/util/jin_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
 import 'package:flutter/material.dart';
 
-class Knight extends SimplePlayer with Lighting, ObjectCollision {
+class Jin extends SimplePlayer with Lighting, ObjectCollision {
   final Vector2 initPosition;
   double attack = 25;
   double stamina = 100;
@@ -18,10 +17,10 @@ class Knight extends SimplePlayer with Lighting, ObjectCollision {
   bool containKey = false;
   bool showObserveEnemy = false;
 
-  Knight({
+  Jin({
     this.initPosition,
   }) : super(
-          animation: IszuSpriteSheet.playerAnimations(),
+          animation: JinSpriteSheet.playerAnimations(),
           width: tileSize,
           height: tileSize * 2,
           position: initPosition,
@@ -95,10 +94,10 @@ class Knight extends SimplePlayer with Lighting, ObjectCollision {
     decrementStamina(15);
     this.simpleAttackMelee(
       damage: attack,
-      animationBottom: IszuSpriteSheet.attackEffectBottom(),
-      animationLeft: IszuSpriteSheet.attackEffectLeft(),
-      animationRight: IszuSpriteSheet.attackEffectRight(),
-      animationTop: IszuSpriteSheet.attackEffectTop(),
+      animationBottom: JinSpriteSheet.attackEffectBottom(),
+      animationLeft: JinSpriteSheet.attackEffectLeft(),
+      animationRight: JinSpriteSheet.attackEffectRight(),
+      animationTop: JinSpriteSheet.attackEffectTop(),
       height: tileSize,
       width: tileSize,
     );

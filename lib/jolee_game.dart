@@ -19,27 +19,19 @@ import 'package:darkness_dungeon/util/dialogs.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
 import 'package:flutter/material.dart';
 
-class Game extends StatefulWidget {
-  int currentPosition;
-
-  Game(int currentPosition);
-
+class JoleeGame extends StatefulWidget {
 
 
   @override
-  _GameState createState() => _GameState(currentPosition);
+  _GameState createState() => _GameState();
 }
 
-class _GameState extends State<Game>
+class _GameState extends State<JoleeGame>
     with WidgetsBindingObserver
     implements GameListener {
   bool showGameOver = false;
 
   GameController _controller;
-
-  int currentPosition;
-
-  _GameState(int currentPosition);
 
   @override
   void initState() {
@@ -152,7 +144,7 @@ class _GameState extends State<Game>
       context,
       () {
         Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Game(currentPosition)),
+          MaterialPageRoute(builder: (context) => JoleeGame()),
           (Route<dynamic> route) => false,
         );
       },
