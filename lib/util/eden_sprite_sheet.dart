@@ -2,7 +2,7 @@ import 'package:bonfire/bonfire.dart';
 
 class EdenSpriteSheet {
   static Future<SpriteAnimation> idleRight() => SpriteAnimation.load(
-        'player/eden_idle.png',
+        'eden/idle.png',
         SpriteAnimationData.sequenced(
           amount: 4,
           stepTime: 0.1,
@@ -10,8 +10,8 @@ class EdenSpriteSheet {
         ),
       );
 
-  static Future<SpriteAnimation> attackEffectBottom() => SpriteAnimation.load(
-        'player/atack_effect_bottom.png',
+  static Future<SpriteAnimation> meleeAttackBottom() => SpriteAnimation.load(
+        'eden/melee_bottom.png',
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
@@ -19,24 +19,24 @@ class EdenSpriteSheet {
         ),
       );
 
-  static Future<SpriteAnimation> attackEffectLeft() => SpriteAnimation.load(
-        'player/atack_effect_left.png',
+  static Future<SpriteAnimation> meleeAttackLeft() => SpriteAnimation.load(
+        'eden/melee_left.png',
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
           textureSize: Vector2(32, 64),
         ),
       );
-  static Future<SpriteAnimation> attackEffectRight() => SpriteAnimation.load(
-        'player/atack_effect_right.png',
+  static Future<SpriteAnimation> meleeAttackRight() => SpriteAnimation.load(
+        'eden/melee_right.png',
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
           textureSize: Vector2(32, 64),
         ),
       );
-  static Future<SpriteAnimation> attackEffectTop() => SpriteAnimation.load(
-        'player/atack_effect_top.png',
+  static Future<SpriteAnimation> meleeAttackTop() => SpriteAnimation.load(
+        'eden/melee_top.png',
         SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: 0.1,
@@ -47,7 +47,7 @@ class EdenSpriteSheet {
   static SimpleDirectionAnimation playerAnimations() =>
       SimpleDirectionAnimation(
         idleLeft: SpriteAnimation.load(
-          'player/eden_idle_left.png',
+          'eden/idle_left.png',
           SpriteAnimationData.sequenced(
             amount: 6,
             stepTime: 0.1,
@@ -56,7 +56,7 @@ class EdenSpriteSheet {
         ),
         idleRight: idleRight(),
         runLeft: SpriteAnimation.load(
-          'player/eden_run_left.png',
+          'eden/run_left.png',
           SpriteAnimationData.sequenced(
             amount: 6,
             stepTime: 0.1,
@@ -64,7 +64,7 @@ class EdenSpriteSheet {
           ),
         ),
         runRight: SpriteAnimation.load(
-          'player/eden_run.png',
+          'eden/run.png',
           SpriteAnimationData.sequenced(
             amount: 6,
             stepTime: 0.1,
@@ -72,4 +72,47 @@ class EdenSpriteSheet {
           ),
         ),
       );
+
+  static Future<SpriteAnimation> rangeAttackBottom() => SpriteAnimation.load(
+    'eden/range_bottom.png',
+    SpriteAnimationData.sequenced(
+      amount: 6,
+      stepTime: 0.1,
+      textureSize: Vector2(32, 64),
+    ),
+  );
+
+  static Future<SpriteAnimation> rangeAttackLeft() => SpriteAnimation.load(
+    'eden/range_left.png',
+    SpriteAnimationData.sequenced(
+      amount: 6,
+      stepTime: 0.1,
+      textureSize: Vector2(32, 64),
+    ),
+  );
+  static Future<SpriteAnimation> rangeAttackRight() => SpriteAnimation.load(
+    'eden/range_right.png',
+    SpriteAnimationData.sequenced(
+      amount: 6,
+      stepTime: 0.1,
+      textureSize: Vector2(32, 64),
+    ),
+  );
+  static Future<SpriteAnimation> rangeAttackTop() => SpriteAnimation.load(
+    'eden/range_top.png',
+    SpriteAnimationData.sequenced(
+      amount: 6,
+      stepTime: 0.1,
+      textureSize: Vector2(32, 64),
+    ),
+  );
+
+  static Future<SpriteAnimation> rangeExplosion() => SpriteAnimation.load(
+    'eden/explosion.png',
+    SpriteAnimationData.sequenced(
+      amount: 6,
+      stepTime: 0.1,
+      textureSize: Vector2(32, 64),
+    ),
+  );
 }

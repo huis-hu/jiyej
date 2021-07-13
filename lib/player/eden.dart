@@ -2,6 +2,7 @@ import 'dart:async' as async;
 
 import 'package:bonfire/bonfire.dart';
 import 'package:darkness_dungeon/main.dart';
+import 'package:darkness_dungeon/util/eden_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/functions.dart';
 import 'package:darkness_dungeon/util/game_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/iszu_sprite_sheet.dart';
@@ -9,35 +10,34 @@ import 'package:darkness_dungeon/util/player_sprite_sheet.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
 import 'package:flutter/material.dart';
 
-class Iszu extends SimplePlayer with Lighting, ObjectCollision {
+class Eden extends SimplePlayer with Lighting, ObjectCollision {
 
   final Vector2 initPosition;
   double attack = 25;
   double stamina = 100;
-  Skill latin = Skill();
   Skill english = Skill();
   Skill dutch = Skill();
   Skill french = Skill();
   Skill math = Skill();
   Skill physics = Skill();
-  Skill religion = Skill();
-  Skill gymnastics = Skill();
+  Skill biology = Skill();
+  Skill alchemy = Skill();
   Skill geology = Skill();
   Skill history = Skill();
   Skill enginering = Skill();
   Skill science = Skill();
-
-  double initSpeed = tileSize / 0.25;
+  int   level = 30;
+  double initSpeed = tileSize / 0.025;
   async.Timer _timerStamina;
   bool containKey = false;
   bool showObserveEnemy = false;
-  var job = Healer(); 
+  var job = Scientist();
   var skills = [];
 
-  Iszu({
+  Eden({
     this.initPosition,
   }) : super(
-          animation: IszuSpriteSheet.playerAnimations(),
+          animation: EdenSpriteSheet.playerAnimations(),
           width: tileSize,
           height: tileSize * 2,
           position: initPosition,
@@ -90,7 +90,7 @@ class Iszu extends SimplePlayer with Lighting, ObjectCollision {
     remove();
     gameRef.addGameComponent(
       GameDecoration.withSprite(
-        Sprite.load('player/iszu_crypt.png'),
+        Sprite.load('player/eden_crypt.png'),
         position: Vector2(
           this.position.center.dx,
           this.position.center.dy,
@@ -110,10 +110,10 @@ class Iszu extends SimplePlayer with Lighting, ObjectCollision {
     Sounds.attackPlayerMelee();
     decrementStamina(15);
     this.simpleAttackMelee(
-      animationBottom: IszuSpriteSheet.meleeAttackBottom(),
-      animationLeft:   IszuSpriteSheet.meleeAttackLeft(),
-      animationRight:  IszuSpriteSheet.meleeAttackRight(),
-      animationTop:    IszuSpriteSheet.meleeAttackTop(),
+      animationBottom: EdenSpriteSheet.meleeAttackBottom(),
+      animationLeft:   EdenSpriteSheet.meleeAttackLeft(),
+      animationRight:  EdenSpriteSheet.meleeAttackRight(),
+      animationTop:    EdenSpriteSheet.meleeAttackTop(),
       height:          tileSize,
       width:           tileSize,
       damage:          attack,
@@ -129,11 +129,11 @@ class Iszu extends SimplePlayer with Lighting, ObjectCollision {
 
     decrementStamina(10);
     this.simpleAttackRange(
-      animationRight:   IszuSpriteSheet.rangeAttackRight(),
-      animationLeft:    IszuSpriteSheet.rangeAttackLeft(),
-      animationTop:     IszuSpriteSheet.rangeAttackTop(),
-      animationBottom:  IszuSpriteSheet.rangeAttackBottom(),
-      animationDestroy: IszuSpriteSheet.rangeExplosion(),
+      animationRight:   EdenSpriteSheet.rangeAttackRight(),
+      animationLeft:    EdenSpriteSheet.rangeAttackLeft(),
+      animationTop:     EdenSpriteSheet.rangeAttackTop(),
+      animationBottom:  EdenSpriteSheet.rangeAttackBottom(),
+      animationDestroy: EdenSpriteSheet.rangeExplosion(),
       width: tileSize * 0.65,
       height: tileSize * 0.65,
       damage: 10,
@@ -236,7 +236,7 @@ class Iszu extends SimplePlayer with Lighting, ObjectCollision {
   }
 }
 
-class Healer {
+class Scientist {
 }
 
 class Skill {

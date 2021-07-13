@@ -95,10 +95,10 @@ class Knight extends SimplePlayer with Lighting, ObjectCollision {
     decrementStamina(15);
     this.simpleAttackMelee(
       damage: attack,
-      animationBottom: IszuSpriteSheet.attackEffectBottom(),
-      animationLeft: IszuSpriteSheet.attackEffectLeft(),
-      animationRight: IszuSpriteSheet.attackEffectRight(),
-      animationTop: IszuSpriteSheet.attackEffectTop(),
+      animationBottom: PlayerSpriteSheet.attackEffectBottom(),
+      animationLeft: PlayerSpriteSheet.attackEffectLeft(),
+      animationRight: PlayerSpriteSheet.attackEffectRight(),
+      animationTop: PlayerSpriteSheet.attackEffectTop(),
       height: tileSize,
       width: tileSize,
     );

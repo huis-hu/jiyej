@@ -19,6 +19,8 @@ import 'package:darkness_dungeon/util/dialogs.dart';
 import 'package:darkness_dungeon/util/sounds.dart';
 import 'package:flutter/material.dart';
 
+import 'player/eden.dart';
+
 class EdenGame extends StatefulWidget {
 
 
@@ -98,11 +100,11 @@ class _GameState extends State<EdenGame>
             )
           ],
         ),
-        player: Knight(
+        player: Eden(
           initPosition: Vector2(2 * tileSize, 3 * tileSize),
         ),
         map: TiledWorldMap(
-          'tiled/map.json',
+          'tiled/eden_map.json',
           forceTileSize: Size(tileSize, tileSize),
           objectsBuilder: {
             'door': (p) => Door(p.position, p.size),
